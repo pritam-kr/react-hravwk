@@ -747,7 +747,7 @@ export const text = [
 
 // lookup
 
-export const text = [
+export const lookup = [
   { '=': '=' },
   { '!=': '!=' },
   { in: 'in' },

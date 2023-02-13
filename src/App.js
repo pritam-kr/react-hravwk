@@ -12,7 +12,6 @@ export default function App() {
 
   const [f, setF] = useState({ lead: [], contact: [] });
 
-  console.log(filter);
   useEffect(() => {
     setLeadType('lead');
     setLead({ lead: lead, contact: contact });
@@ -24,7 +23,7 @@ export default function App() {
     setDataTypes([...new Set([...leadDataType, ...contactDataType])]);
   }, [leads]);
 
-  console.log();
+  console.log(f[leadType]);
 
   return (
     <div className="g-parent">
@@ -66,12 +65,21 @@ export default function App() {
                     zoho_field: e.target.value,
                     value: '',
                   },
-                ],
+                ].map((f, i) =>
+                  leads[leadType].some((g) => g.name === f.zoho_field)
+                    ? {
+                        ...f,
+                        zoho_field: leads[leadType].find(
+                          (g) => g.name === f.zoho_field
+                        ).label,
+                      }
+                    : f
+                ),
               }));
             }}
           >
             {leads[leadType]?.map((e) => (
-              <option value={e.label}>{e.label}</option>
+              <option value={e.name}>{e.label}</option>
             ))}
           </select>
         </div>
