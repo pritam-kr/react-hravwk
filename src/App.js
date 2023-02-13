@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './style.css';
-import { lead, contact } from './data.js';
+import { lead, contact, date, text, lookup } from './data.js';
 
 export default function App() {
   const [leadType, setLeadType] = useState('');
@@ -23,7 +23,23 @@ export default function App() {
     setDataTypes([...new Set([...leadDataType, ...contactDataType])]);
   }, [leads]);
 
-  console.log(f[leadType]);
+  const getOperator = (dataTypes) => {
+    console.log(dataTypes);
+    switch (dataTypes) {
+      case 'date':
+      case 'datetime':
+      case 'currency':
+      case 'number':
+        return date;
+
+      case 'text':
+      case 'picklist':
+        return text;
+
+      case 'lookup':
+        return lookup;
+    }
+  };
 
   return (
     <div className="g-parent">
@@ -69,9 +85,13 @@ export default function App() {
                   leads[leadType].some((g) => g.name === f.zoho_field)
                     ? {
                         ...f,
+                        id: i,
                         zoho_field: leads[leadType].find(
                           (g) => g.name === f.zoho_field
                         ).label,
+                        dataTypes: leads[leadType].find(
+                          (g) => g.name === f.zoho_field
+                        ).type,
                       }
                     : f
                 ),
@@ -90,6 +110,14 @@ export default function App() {
           return (
             <div className="field_card">
               <p>{zf.zoho_field}</p>
+
+              <div>
+                <select>
+                  {Object.values(getOperator(zf.dataTypes)).map((f) => (
+                    <option>{f}</option>
+                  ))}
+                </select>
+              </div>
             </div>
           );
         })}

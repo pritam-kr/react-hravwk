@@ -717,43 +717,43 @@ const contact = [
 ];
 
 // date, datetime, number, currency
-export const date = [
-  { '=': '=' },
-  { '!=': '!=' },
-  { '>=': '>=' },
-  { '>': '>' },
-  { '<': '<' },
-  { '<=': '<=' },
-  { in: 'in' },
-  { notIn: 'not in' },
-  { isNull: 'is null' },
-  { isNotNull: 'is not null' },
-  { between: 'between' },
-  { notBetween: 'not between' },
-];
+export const date = {
+  '=': '=',
+  '!=': '!=',
+  '>=': '>=',
+  '>': '>',
+  '<': '<',
+  '<=': '<=',
+  in: 'in',
+  notIn: 'not in',
+  isNull: 'is null',
+  isNotNull: 'is not null',
+  between: 'between',
+  notBetween: 'not between',
+};
 
 // text, picklist
 
-export const text = [
-  { '=': '=' },
-  { '!=': '!=' },
-  { like: 'like' },
-  { notLike: 'not like' },
-  { in: 'in' },
-  { notIn: 'not in' },
-  { isNull: 'is null' },
-  { isNotNull: 'is not null' },
-];
+export const text = {
+  '=': '=',
+  '!=': '!=',
+  like: 'like',
+  notLike: 'not like',
+  in: 'in',
+  notIn: 'not in',
+  isNull: 'is null',
+  isNotNull: 'is not null',
+};
 
 // lookup
 
-export const lookup = [
-  { '=': '=' },
-  { '!=': '!=' },
-  { in: 'in' },
-  { notIn: 'not in' },
-  { isNull: 'is null' },
-  { isNotNull: 'is not null' },
-];
+export const lookup = {
+  '=': '=',
+  '!=': '!=',
+  in: 'in',
+  notIn: 'not in',
+  isNull: 'is null',
+  isNotNull: 'is not null',
+};
 
 export { lead, contact };
