@@ -10,6 +10,8 @@ export default function App() {
 
   const [filter, setFilter] = useState([]);
 
+  const [f, setF] = useState({ lead: [], contact: [] });
+
   console.log(filter);
   useEffect(() => {
     setLeadType('lead');
@@ -21,6 +23,8 @@ export default function App() {
     const contactDataType = [...new Set(leads.contact?.map((f) => f.type))];
     setDataTypes([...new Set([...leadDataType, ...contactDataType])]);
   }, [leads]);
+
+  console.log();
 
   return (
     <div className="g-parent">
@@ -53,16 +57,17 @@ export default function App() {
           <select
             name="field"
             onChange={(e) => {
-              return setFilter((prev) =>
-                [
-                  ...prev,
+              return setF((prev) => ({
+                ...prev,
+                [leadType]: [
+                  ...prev[leadType],
                   {
                     id: '',
                     zoho_field: e.target.value,
                     value: '',
                   },
-                ].map((f, i) => ({ ...f, id: i }))
-              );
+                ],
+              }));
             }}
           >
             {leads[leadType]?.map((e) => (
@@ -73,7 +78,7 @@ export default function App() {
       </div>
 
       <div className="card_wrapper">
-        {filter?.map((zf) => {
+        {f[leadType]?.map((zf) => {
           return (
             <div className="field_card">
               <p>{zf.zoho_field}</p>
@@ -84,3 +89,9 @@ export default function App() {
     </div>
   );
 }
+
+// {
+//   id: '',
+//   zoho_field: e.target.value,
+//   value: '',
+// },

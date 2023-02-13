@@ -716,6 +716,7 @@ const contact = [
   },
 ];
 
+// date, datetime, number, currency
 export const date = [
   { '=': '=' },
   { '!=': '!=' },
@@ -729,6 +730,30 @@ export const date = [
   { isNotNull: 'is not null' },
   { between: 'between' },
   { notBetween: 'not between' },
+];
+
+// text, picklist
+
+export const text = [
+  { '=': '=' },
+  { '!=': '!=' },
+  { like: 'like' },
+  { notLike: 'not like' },
+  { in: 'in' },
+  { notIn: 'not in' },
+  { isNull: 'is null' },
+  { isNotNull: 'is not null' },
+];
+
+// lookup
+
+export const text = [
+  { '=': '=' },
+  { '!=': '!=' },
+  { in: 'in' },
+  { notIn: 'not in' },
+  { isNull: 'is null' },
+  { isNotNull: 'is not null' },
 ];
 
 export { lead, contact };
