@@ -47,6 +47,7 @@ export default function App() {
           return text;
 
         case 'lookup':
+        case 'ownerlookup':
           return lookup;
 
         case 'boolean':
@@ -56,6 +57,8 @@ export default function App() {
       return ['no operator found'];
     }
   };
+
+  console.log(leads[leadType]);
 
   return (
     <div className="g-parent">
