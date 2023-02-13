@@ -716,4 +716,19 @@ const contact = [
   },
 ];
 
+export const date = [
+  { '=': '=' },
+  { '!=': '!=' },
+  { '>=': '>=' },
+  { '>': '>' },
+  { '<': '<' },
+  { '<=': '<=' },
+  { in: 'in' },
+  { notIn: 'not in' },
+  { isNull: 'is null' },
+  { isNotNull: 'is not null' },
+  { between: 'between' },
+  { notBetween: 'not between' },
+];
+
 export { lead, contact };
