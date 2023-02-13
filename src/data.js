@@ -756,4 +756,18 @@ export const lookup = {
   isNotNull: 'is not null',
 };
 
+export const boolean = {
+  '=': '=',
+};
+
+export const supportedOperator = [
+  'boolean',
+  'lookup',
+  'text',
+  'picklict',
+  'date',
+  'datetime',
+  'number',
+  'currency',
+];
 export { lead, contact };

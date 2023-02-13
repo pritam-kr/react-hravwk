@@ -1,6 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import './style.css';
-import { lead, contact, date, text, lookup } from './data.js';
+import {
+  lead,
+  contact,
+  date,
+  text,
+  lookup,
+  boolean,
+  supportedOperator,
+} from './data.js';
 
 export default function App() {
   const [leadType, setLeadType] = useState('');
@@ -25,19 +33,27 @@ export default function App() {
 
   const getOperator = (dataTypes) => {
     console.log(dataTypes);
-    switch (dataTypes) {
-      case 'date':
-      case 'datetime':
-      case 'currency':
-      case 'number':
-        return date;
 
-      case 'text':
-      case 'picklist':
-        return text;
+    if (supportedOperator.includes(dataTypes)) {
+      switch (dataTypes) {
+        case 'date':
+        case 'datetime':
+        case 'currency':
+        case 'number':
+          return date;
 
-      case 'lookup':
-        return lookup;
+        case 'text':
+        case 'picklist':
+          return text;
+
+        case 'lookup':
+          return lookup;
+
+        case 'boolean':
+          return boolean;
+      }
+    } else {
+      return ['no operator found'];
     }
   };
 
@@ -80,6 +96,7 @@ export default function App() {
                     id: '',
                     zoho_field: e.target.value,
                     value: '',
+                    operator: '',
                   },
                 ].map((f, i) =>
                   leads[leadType].some((g) => g.name === f.zoho_field)
@@ -112,9 +129,20 @@ export default function App() {
               <p>{zf.zoho_field}</p>
 
               <div>
-                <select>
-                  {Object.values(getOperator(zf.dataTypes)).map((f) => (
-                    <option>{f}</option>
+                <select
+                  onChange={(e) =>
+                    setF((prev) => ({
+                      ...prev,
+                      [leadType]: [...prev[leadType]].map((ff) =>
+                        ff.zoho_field === zf.zoho_field
+                          ? { ...ff, operator: e.target.value }
+                          : ff
+                      ),
+                    }))
+                  }
+                >
+                  {Object?.values(getOperator(zf.dataTypes))?.map((f) => (
+                    <option value={f}>{f}</option>
                   ))}
                 </select>
               </div>
