@@ -764,7 +764,7 @@ export const supportedOperator = [
   'boolean',
   'lookup',
   'text',
-  'picklict',
+  'picklist',
   'date',
   'datetime',
   'number',

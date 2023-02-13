@@ -20,6 +20,8 @@ export default function App() {
 
   const [f, setF] = useState({ lead: [], contact: [] });
 
+  console.log(f);
+
   useEffect(() => {
     setLeadType('lead');
     setLead({ lead: lead, contact: contact });
@@ -32,8 +34,6 @@ export default function App() {
   }, [leads]);
 
   const getOperator = (dataTypes) => {
-    console.log(dataTypes);
-
     if (supportedOperator.includes(dataTypes)) {
       switch (dataTypes) {
         case 'date':
